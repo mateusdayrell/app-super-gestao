@@ -20,14 +20,14 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\FornecedorController;
 
-
+use App\Http\Middleware\LogAcessoMiddleware;
 
 use App\Http\Controllers\TesteController;
 
 
 
 
-Route::get('/', [PrincipalController::class, 'index'])->name('site.index');
+Route::get('/', [PrincipalController::class, 'index'])->middleware(LogAcessoMiddleware::class)->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.sobre-nos');
 Route::get('/login', function () { return 'login'; })->name('site.login ');
 
