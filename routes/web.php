@@ -27,11 +27,13 @@ use App\Http\Controllers\TesteController;
 
 
 
-Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+Route::get('/', [PrincipalController::class, 'index'])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.sobre-nos');
+Route::get('/login', function () { return 'login'; })->name('site.login ');
+
+//CONTATO
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::post('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::get('/login', function () { return 'login'; })->name('site.login ');;
+Route::post('/contato', [ContatoController::class, 'create'])->name('site.contato');
 
 Route::prefix('/app')->group(function(){
     Route::get('/clientes', function () { return 'clientes'; })->name('app.clientes');

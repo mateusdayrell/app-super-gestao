@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
 use App\Models\Fornecedor;
 
 class FornecedorSeeder extends Seeder
@@ -17,33 +18,33 @@ class FornecedorSeeder extends Seeder
     public function run()
     {
         
-        //Work withou FILABLE {
-        $fornecedor = new Fornecedor();
+        // //Work withou FILABLE {
+        // $fornecedor = new Fornecedor();
 
-        $fornecedor->nome = 'Fornecedor de energia';
-        $fornecedor->site = 'maisenergia.com';
-        $fornecedor->email = 'maisenergia@contato.com';
-        $fornecedor->uf = 'PI';
-        $fornecedor->save();
-        // }
+        // $fornecedor->nome = 'Fornecedor de energia';
+        // $fornecedor->site = 'maisenergia.com';
+        // $fornecedor->email = 'maisenergia@contato.com';
+        // $fornecedor->uf = 'PI';
+        // $fornecedor->save();
+        // // }
 
-        //OR
+        // //OR
 
-        // needs FILABLE:
-        Fornecedor::create([
-            'nome' => 'Fornecedor de papel',
-            'site'=> 'maispapel.com',
-            'email'=> 'maispapel@contato.com',
-            'uf'=> 'ES'
-        ]);
+        // // needs FILABLE:
+        // Fornecedor::create([
+        //     'nome' => 'Fornecedor de papel',
+        //     'site'=> 'maispapel.com',
+        //     'email'=> 'maispapel@contato.com',
+        //     'uf'=> 'ES'
+        // ]);
 
-        //OR
+        // //OR
 
-        DB::table('fornecedores')->insert([
-            'nome'=> 'Fornecedor de agua',
-            'site'=> 'maisagua.com',
-            'email'=> 'maisagua@contato.com',
-            'uf'=> 'PR'
-        ]);
+        // DB::table('fornecedores')->insert([
+        //     'nome'=> 'Fornecedor de agua',
+        //     'site'=> 'maisagua.com',
+        //     'email'=> 'maisagua@contato.com',
+        //     'uf'=> 'PR'
+        // ]);
     }
 }
