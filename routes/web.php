@@ -45,7 +45,17 @@ Route::prefix('/app')->middleware('autenticacao:padrao,supervisor')->group(funct
     Route::get('/home', [HomeController::class, 'index'])->name('app.home');
     Route::get('/sair', [LoginController::class, 'logOut'])->name('app.sair');
     Route::get('/cliente', [ClienteController::class, 'index'])->name('app.cliente');
+    
+    //FORNECEDOR
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
+    Route::get('/fornecedor/listar', [FornecedorController::class, 'list'])->name('app.fornecedor.listar');
+    Route::post('/fornecedor/listar', [FornecedorController::class, 'list'])->name('app.fornecedor.listar');
+    Route::get('/fornecedor/adicionar', [FornecedorController::class, 'add'])->name('app.fornecedor.adicionar');
+    Route::post('/fornecedor/adicionar', [FornecedorController::class, 'add'])->name('app.fornecedor.adicionar');
+    Route::get('/fornecedor/editar/{id}/{msg?}', [FornecedorController::class, 'edit'])->name('app.fornecedor.editar');
+    Route::get('/fornecedor/excluir/{id}', [FornecedorController::class, 'delete'])->name('app.fornecedor.excluir');
+
+    //PRODUTO
     Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
 });
 
