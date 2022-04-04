@@ -16,7 +16,7 @@ class ContatoController extends Controller
         return view ('site.contato', ['titulo' => 'Contato', 'motivoContato' => $motivoContato]);
     }
 
-    public function create (Request $request) {
+    public function store (Request $request) {
 
         $rules = [
             'nome' => 'required|min:3|max:40',
@@ -37,7 +37,7 @@ class ContatoController extends Controller
 
         $request->validate($rules, $feedback);
 
-        SiteContato()::create($request->all());
+        SiteContato::create($request->all());
 
         return redirect()->route('site.index');
     }

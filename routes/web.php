@@ -23,7 +23,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
-
+use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Controllers\TesteController;
 
 
@@ -38,7 +38,7 @@ Route::post('/login', [LoginController::class, 'autenthicate'])->name('site.logi
 
 //CONTATO
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::post('/contato', [ContatoController::class, 'create'])->name('site.contato');
+Route::post('/contato', [ContatoController::class, 'store'])->name('site.contato');
 
 //APP
 Route::prefix('/app')->middleware('autenticacao:padrao,supervisor')->group(function(){
@@ -56,7 +56,11 @@ Route::prefix('/app')->middleware('autenticacao:padrao,supervisor')->group(funct
     Route::get('/fornecedor/excluir/{id}', [FornecedorController::class, 'delete'])->name('app.fornecedor.excluir');
 
     //PRODUTO
-    Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
+    Route::resource('produto', ProdutoController::class);
+
+    //PRODUTOS DETALHES
+    Route::resource('produto-detalhe', ProdutoDetalheController::class);
+    
 });
 
 //REDIRECT
