@@ -22,6 +22,8 @@ use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoProdutoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Controllers\TesteController;
@@ -44,7 +46,6 @@ Route::post('/contato', [ContatoController::class, 'store'])->name('site.contato
 Route::prefix('/app')->middleware('autenticacao:padrao,supervisor')->group(function(){
     Route::get('/home', [HomeController::class, 'index'])->name('app.home');
     Route::get('/sair', [LoginController::class, 'logOut'])->name('app.sair');
-    Route::get('/cliente', [ClienteController::class, 'index'])->name('app.cliente');
     
     //FORNECEDOR
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
@@ -60,7 +61,19 @@ Route::prefix('/app')->middleware('autenticacao:padrao,supervisor')->group(funct
 
     //PRODUTOS DETALHES
     Route::resource('produto-detalhe', ProdutoDetalheController::class);
-    
+
+    //PEDIDO
+    Route::resource('pedido', PedidoController::class);
+
+    //CLIENTES
+    Route::resource('cliente', ClienteController::class);
+
+    //PEDIDOS-PRODUTOS
+    Route::get('pedido-produto/create/{pedido}', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
+    Route::post('pedido-produto/store/{pedido}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
+    Route::delete('pedido-produto/destroy/{pedidoProduto}/{pedidoId}', [PedidoProdutoController::class, 'destroy'])->name('pedido-produto.destroy');
+    // Route::delete('pedido-produto/destroy/{pedido}/{produto}', [PedidoProdutoController::class, 'destroy'])->name('pedido-produto.destroy');
+    //Route::resource('pedido-produto', PedidoProdutoController::class);
 });
 
 //REDIRECT
